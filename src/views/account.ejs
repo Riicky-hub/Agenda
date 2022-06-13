@@ -1,0 +1,57 @@
+<%- include('includes/head'); %>
+<%- include('includes/navbar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 my-3">
+            <h1 class="text-center">Sua conta</h1>
+            <p class="text-center lead">Faça login ou cadastro abaixo</p>
+            <div class="row">
+                <div class="col-lg">
+                    <h4 class="text-center">Cadastro</h4>
+                    <form action="/account/register" method="POST">
+                      <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                        <div class="mb-3">
+                          <label for="cadastroInputEmail" class="form-label">E-mail:</label>
+                          <input type="email" class="form-control" id="cadastroInputEmail" name="email_cadastro">
+                          <div class="form-text">Utilizamos criptografia e seus dados estarão seguros</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="cadastroInputSenha" class="form-label">Senha:</label>
+                          <input type="password" class="form-control" id="cadastroInputSenha" name="password_cadastro">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cadastroInputConfirm" class="form-label">Confirmar senha:</label>
+                            <input type="password" class="form-control" id="cadastroInputConfirm" name="confirm_cadastro">
+                        </div>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="checkbox_cadastro">
+                          <label class="form-check-label" for="checkbox_cadastro">Aceitar termos de serviço</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+                <div class="col-lg">
+                    <h4 class="text-center">Login</h4>
+                    <form action="/account/login" method="POST">
+                      <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                        <div class="mb-3">
+                          <label for="loginInputEmail" class="form-label">E-mail:</label>
+                          <input type="email" class="form-control" id="loginInputEmail" name="email_login">
+                        </div>
+                        <div class="mb-3">
+                          <label for="loginInputSenha" class="form-label">Senha:</label>
+                          <input type="password" class="form-control" id="loginInputSenha" name="senha_login">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+<%- include('includes/footer'); %>
