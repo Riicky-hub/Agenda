@@ -8,5 +8,6 @@ route.get('/', homeController.index);
 
 // Rotas de login/cadastro
 route.get('/account/index', accountController.index);
+route.post('/account/register', accountController.register);
 
 module.exports = route;
