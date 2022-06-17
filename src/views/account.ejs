@@ -15,19 +15,19 @@
                       <input type="hidden" value="<%= csrfToken %>" name="_csrf">
                         <div class="mb-3">
                           <label for="cadastroInputEmail" class="form-label">E-mail:</label>
-                          <input type="email" class="form-control" id="cadastroInputEmail" name="email_cadastro">
+                          <input type="email" class="form-control" id="cadastroInputEmail" required name="email_cadastro">
                           <div class="form-text">Utilizamos criptografia e seus dados estarão seguros</div>
                         </div>
                         <div class="mb-3">
                           <label for="cadastroInputSenha" class="form-label">Senha:</label>
-                          <input type="password" class="form-control" id="cadastroInputSenha" name="password_cadastro">
+                          <input type="password" class="form-control" id="cadastroInputSenha" required name="password_cadastro">
                         </div>
                         <div class="mb-3">
                             <label for="cadastroInputConfirm" class="form-label">Confirmar senha:</label>
-                            <input type="password" class="form-control" id="cadastroInputConfirm" name="confirm_cadastro">
+                            <input type="password" class="form-control" id="cadastroInputConfirm" required name="confirm_cadastro">
                         </div>
                         <div class="mb-3 form-check">
-                          <input type="checkbox" class="form-check-input" id="checkbox_cadastro">
+                          <input type="checkbox" class="form-check-input" id="checkbox_cadastro" checked>
                           <label class="form-check-label" for="checkbox_cadastro">Aceitar termos de serviço</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
