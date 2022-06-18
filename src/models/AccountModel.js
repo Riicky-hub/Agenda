@@ -15,6 +15,18 @@ class Account {
     this.errors = [];
     this.user = null;
   }
+  async login() {
+    this.cleanUpLogin();
+    this.user = await AccountModel.findOne({ email: this.body.email });
+    if(!this.user) {
+      this.errors.push('Usuário não existe!');
+    }
+    if(this.errors.length > 0) return;
+    if(!bcryptjs.compareSync(this.body.password, this.user.password)) {
+      this.errors.push('E-mail ou senha está incorreto!');
+      this.user = null;
+    }
+  }
   async register() {
     this.valid();
     if(this.errors.length > 0) return;
@@ -53,6 +65,17 @@ class Account {
       email: this.body.email_cadastro,
       password: this.body.password_cadastro,
       confirm: this.body.confirm_cadastro
+    }
+  }
+  cleanUpLogin() {
+    for(const key in this.body) {
+      if(typeof this.body[key] !== 'string') {
+        this.body[key] = '';
+      }
+    }
+    this.body = {
+      email: this.body.email_login,
+      password: this.body.senha_login
     }
   }
   async userExits() {
