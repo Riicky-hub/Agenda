@@ -1,0 +1,40 @@
+<%- include('includes/head'); %>
+  <%- include('includes/navbar') %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 my-3">
+        <h1 class="text-center">Seus contatos</h1>
+        <p class="text-center lead">Crie seus contatos abaixo</p>
+        <%- include('includes/messages'); %>
+          <div class="row">
+            <div class="col-lg">
+              <h4 class="text-center">Cadastro</h4>
+              <form action="/contato/register" method="POST">
+                <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                <div class="mb-3">
+                  <label for="inputName" class="form-label">Nome:</label>
+                  <input type="text" value="<%= contato.name %>" class="form-control" id="inputName" required name="nome" min="3" max="15">
+                </div>
+                <div class="mb-3">
+                  <label for="inputSobrenome" class="form-label">Sobrenome:</label>
+                  <input type="text" value="<%= contato.sobrenome %>" class="form-control" id="inputSobrenome" name="sobrenome">
+                </div>
+                <div class="mb-3">
+                  <label for="inputEmail" class="form-label">E-mail:</label>
+                  <input type="email" value="<%= contato.email %>" class="form-control" id="inputEmail" name="email">
+                </div>
+                <div class="mb-3">
+                  <label for="inputNumber" class="form-label">Número:</label>
+                  <input type="tel" value="<%= contato.phone %>" class="form-control" id="inputNumber" name="numero" min="8" max="15">
+                </div>
+                <button type="submit" class="btn btn-primary">Criar contato</button>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </div>
+<%- include('includes/footer'); %>
