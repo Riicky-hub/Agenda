@@ -11,7 +11,11 @@
           <div class="row">
             <div class="col-lg">
               <h4 class="text-center">Cadastro</h4>
-              <form action="/contato/register" method="POST">
+              <% if(contato._id) { %>
+                <form action="/contato/edit/<%= contato._id %>" method="POST">
+              <% } else { %>
+                <form action="/contato/register" method="POST">
+              <% } %>
                 <input type="hidden" value="<%= csrfToken %>" name="_csrf">
                 <div class="mb-3">
                   <label for="inputName" class="form-label">Nome:</label>
