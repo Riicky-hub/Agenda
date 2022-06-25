@@ -10,12 +10,15 @@
             <%- include('includes/messages'); %> 
             <div class="responsive-table">
                 <table class="table my-3">
-                    <tr>
-                        <td>Ricardo</td>
-                        <td>Amorim</td>
-                        <td>82999051953</td>
-                        <td>richardjosephace1960@gmail.com</td>
-                    </tr>
+                    <% contatos.forEach(contato => { %>
+                        <tr>
+                            <td><%= contato.name %></td>
+                            <td><%= contato.sobrenome %></td>
+                            <td><%= contato.email %></td>
+                            <td><%= contato.phone %></td>
+                            <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
+                        </tr>  
+                    <% }); %>
                 </table>
             </div>
         </div>
