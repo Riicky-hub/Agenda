@@ -29,9 +29,7 @@ exports.register = async (req, res) => {
 exports.editIndex = async (req, res) => {
     if(!req.params.id) return res.render('404');
     const user = await ContatoModel.idFinder(req.params.id);
-    return res.render('contato', {
-        contato: user
-    })
+    return res.render('contato', { contato: user })
 }
 exports.contatoEdited = async (req, res) => {
     try {
@@ -55,4 +53,13 @@ exports.contatoEdited = async (req, res) => {
         console.log(e);
         return res.render('404');
     }
+}
+exports.delete = async (req, res) => {
+    if(!req.params.id) return res.render('404');
+
+    const contato = await ContatoModel.delete(req.params.id);
+
+    req.flash('success', 'Seu contato foi deletado com sucesso!');
+    req.session.save(() => res.redirect('back'));
+    return;
 }

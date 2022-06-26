@@ -33,7 +33,11 @@
                   <label for="inputNumber" class="form-label">Número:</label>
                   <input type="tel" value="<%= contato.phone %>" class="form-control" id="inputNumber" name="numero" min="8" max="15">
                 </div>
-                <button type="submit" class="btn btn-primary">Criar contato</button>
+                <% if(contato._id) { %>
+                  <button type="submit" class="btn btn-primary">Editar contato</button>
+                <% } else {%>
+                  <button type="submit" class="btn btn-primary">Criar contato</button>
+                <% }%>
               </form>
             </div>
           </div>
